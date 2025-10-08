@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="char_resource" load_steps=3 format=3 uid="uid://ckblwfu8cbd12"]
+
+[ext_resource type="Script" uid="uid://dfpwcdfl4m2no" path="res://character/character_resources/char_resource_base.gd" id="1_sl85f"]
+[ext_resource type="SpriteFrames" uid="uid://dfe0vq20kolhe" path="res://art_assets/character_models/characterAnims/priest/priest_anims.tres" id="2_8wb6k"]
+
+[resource]
+script = ExtResource("1_sl85f")
+max_hp = 75
+armor = 3
+dmg = 3
+attack_speed = 2.5
+char_type = "ranged"
+sprite_frames = ExtResource("2_8wb6k")
+id = 2
+metadata/_custom_type_script = "uid://dfpwcdfl4m2no"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="enemyBase" load_steps=3 format=3 uid="uid://cuhd82vh2wq7w"]
+
+[ext_resource type="Script" uid="uid://dv6b4m2dwnanc" path="res://enemy/enemy_resource/enemy_resource_base.gd" id="1_k6t7p"]
+[ext_resource type="SpriteFrames" uid="uid://lk7vptirlpxw" path="res://art_assets/enemyModels/enemy_anims/skeleton_anim.tres" id="2_cufi5"]
+
+[resource]
+script = ExtResource("1_k6t7p")
+hp = 20
+armor = 3
+dmg = 5
+enemy_tier = 1
+sprite_frames = ExtResource("2_cufi5")
+metadata/_custom_type_script = "uid://dv6b4m2dwnanc"

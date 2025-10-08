@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="enemyBase" load_steps=3 format=3 uid="uid://fllksp7jcdun"]
+
+[ext_resource type="Script" uid="uid://dv6b4m2dwnanc" path="res://enemy/enemy_resource/enemy_resource_base.gd" id="1_djyln"]
+[ext_resource type="SpriteFrames" uid="uid://t7ollu1b5800" path="res://art_assets/enemyModels/enemy_anims/gnome_anims.tres" id="2_bnq01"]
+
+[resource]
+script = ExtResource("1_djyln")
+hp = 50
+dmg = 3
+enemy_tier = 1
+sprite_frames = ExtResource("2_bnq01")
+metadata/_custom_type_script = "uid://dv6b4m2dwnanc"

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://unbutrohoar4"]
+
+[ext_resource type="Script" uid="uid://ooy6jnq3bxe2" path="res://enemy/enemy_base/enemy_base_script.gd" id="1_xjn4b"]
+[ext_resource type="Script" uid="uid://5nwwlkom28ch" path="res://enemy/enemy_base/hurt_box_script.gd" id="4_ykusa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jksf"]
+size = Vector2(86, 68)
+
+[node name="EnemyBase" type="CharacterBody2D" node_paths=PackedStringArray("enemy_sprite", "hurtBox")]
+script = ExtResource("1_xjn4b")
+enemy_sprite = NodePath("AnimatedSprite2D")
+hurtBox = NodePath("hurtBox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &"attack"
+
+[node name="hurtBox" type="Area2D" parent="."]
+script = ExtResource("4_ykusa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
+position = Vector2(-9, -2)
+shape = SubResource("RectangleShape2D_8jksf")
+
+[node name="hitBox" type="Area2D" parent="."]

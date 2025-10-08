@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="char_resource" load_steps=3 format=3 uid="uid://ckrei67ypt3x6"]
+
+[ext_resource type="Script" uid="uid://dfpwcdfl4m2no" path="res://character/character_resources/char_resource_base.gd" id="1_28ju8"]
+[ext_resource type="SpriteFrames" uid="uid://dugi5fby7d0b3" path="res://art_assets/character_models/characterAnims/warrior/warrior_anim.tres" id="2_psxs2"]
+
+[resource]
+script = ExtResource("1_28ju8")
+max_hp = 200
+armor = 5
+dmg = 3
+attack_speed = 3.5
+char_type = "melee"
+sprite_frames = ExtResource("2_psxs2")
+id = 3
+metadata/_custom_type_script = "uid://dfpwcdfl4m2no"

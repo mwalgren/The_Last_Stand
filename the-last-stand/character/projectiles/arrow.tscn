@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkecnse7vth7k"]
+
+[ext_resource type="Script" uid="uid://bpomh3s225p78" path="res://character/projectiles/arrow_script.gd" id="1_nxqmw"]
+[ext_resource type="Texture2D" uid="uid://v11ywprhebsg" path="res://art_assets/character_models/Archer/Arrow.png" id="2_reihm"]
+
+[sub_resource type="Curve2D" id="Curve2D_0fty6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pjdn"]
+size = Vector2(43, 14)
+
+[node name="Arrow" type="Path2D" node_paths=PackedStringArray("hitBox", "sprite", "pathFollow")]
+curve = SubResource("Curve2D_0fty6")
+script = ExtResource("1_nxqmw")
+hitBox = NodePath("hitArea")
+sprite = NodePath("Sprite2D")
+pathFollow = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_reihm")
+
+[node name="hitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitArea"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_8pjdn")
+
+[connection signal="area_entered" from="hitArea" to="." method="_on_hit_area_area_entered"]

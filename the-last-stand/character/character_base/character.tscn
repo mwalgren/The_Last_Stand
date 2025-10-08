@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://cstl2ayt7m6j7"]
+
+[ext_resource type="Script" uid="uid://duo21w8s7x3x2" path="res://character/character_base/character.gd" id="1_1l1n4"]
+[ext_resource type="Script" uid="uid://ldevqws11aew" path="res://character/character_base/melee_hit_box.gd" id="3_hx151"]
+[ext_resource type="Script" uid="uid://3g53umh4rqv5" path="res://character/character_base/hurt_box_script.gd" id="3_ugqs2"]
+[ext_resource type="Script" uid="uid://b3yeefh355l8" path="res://character/character_base/enemy_detector_script.gd" id="4_7vspg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
+size = Vector2(75, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6jyn"]
+size = Vector2(70, 97)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tgjim"]
+radius = 274.06567
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugqs2"]
+bg_color = Color(0.09430439, 0.094304405, 0.094304346, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx151"]
+bg_color = Color(0.32495648, 0.6941969, 0.36631703, 1)
+
+[node name="character" type="CharacterBody2D" node_paths=PackedStringArray("animSprite", "hurtBox", "meleeHitbox", "enemyDetector", "hpBar")]
+script = ExtResource("1_1l1n4")
+animSprite = NodePath("AnimatedSprite2D")
+hurtBox = NodePath("HurtBox")
+meleeHitbox = NodePath("meleeHitBox")
+enemyDetector = NodePath("enemy_detector")
+hpBar = NodePath("ProgressBar")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &"attack"
+autoplay = "idle"
+metadata/_edit_lock_ = true
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_ugqs2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1.5, -3)
+shape = SubResource("RectangleShape2D_hx151")
+
+[node name="meleeHitBox" type="Area2D" parent="."]
+monitoring = false
+script = ExtResource("3_hx151")
+
+[node name="melee_hit_range" type="CollisionShape2D" parent="meleeHitBox"]
+position = Vector2(-1, 91.5)
+shape = SubResource("RectangleShape2D_o6jyn")
+debug_color = Color(0.78277403, 0.4331055, 0.11898627, 0.41960785)
+
+[node name="enemy_detector" type="Area2D" parent="."]
+script = ExtResource("4_7vspg")
+metadata/_edit_lock_ = true
+
+[node name="range_finder" type="CollisionShape2D" parent="enemy_detector"]
+shape = SubResource("CircleShape2D_tgjim")
+metadata/_edit_lock_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -36.0
+offset_top = -66.0
+offset_right = 35.0
+offset_bottom = -54.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ugqs2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hx151")
+show_percentage = false
+
+[connection signal="area_entered" from="meleeHitBox" to="meleeHitBox" method="_on_area_entered"]
+[connection signal="area_entered" from="enemy_detector" to="enemy_detector" method="_on_area_entered"]
+[connection signal="area_exited" from="enemy_detector" to="enemy_detector" method="_on_area_exited"]
+[connection signal="enemy_in_range" from="enemy_detector" to="." method="_on_enemy_detector_enemy_in_range"]
+[connection signal="enemy_out_range" from="enemy_detector" to="." method="_on_enemy_detector_enemy_out_range"]
