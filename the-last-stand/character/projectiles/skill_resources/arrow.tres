@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="skillConfig" load_steps=3 format=3 uid="uid://cts5elypuqixp"]
+
+[ext_resource type="PackedScene" uid="uid://bkecnse7vth7k" path="res://character/projectiles/skill_resources/skill_scenes/arrow.tscn" id="1_2avaj"]
+[ext_resource type="Script" uid="uid://dce06hr47giqe" path="res://character/projectiles/skill_resources/skillConfig.gd" id="1_x2vvv"]
+
+[resource]
+script = ExtResource("1_x2vvv")
+projectile_scene = ExtResource("1_2avaj")
+id = "1"
+damage_type = "Physical"
+lifetime = 5.0
+max_range = 200.0
+movement_type = "towards"
+target_mode = "single"
+explode_on = "null"
+cooldown = 3.0
+spawn_mode = "self"
+rank = 1
+metadata/_custom_type_script = "uid://dce06hr47giqe"

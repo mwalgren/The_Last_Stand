@@ -3161,7 +3161,7 @@ spawn_timer = NodePath("Timer")
 spawn_loc = NodePath("enemySpawn")
 
 [node name="enemySpawn" type="Marker2D" parent="enemyFactory"]
-position = Vector2(960, 644)
+position = Vector2(959, 914)
 
 [node name="Timer" type="Timer" parent="enemyFactory"]
 

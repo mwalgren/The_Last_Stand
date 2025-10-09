@@ -8,3 +8,4 @@ class_name characterData
 @export var char_type:String
 @export var sprite_frames:SpriteFrames
 @export var id:int
+@export var default_skill:Resource

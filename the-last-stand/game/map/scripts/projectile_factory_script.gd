@@ -10,6 +10,11 @@ func _enter_tree() -> void:
 	add_to_group("projectile_factory")
 
 
-func fire_projectile(target):
+func spawn(config,target,origin):
+	print("spawning attack")
 	if target:
-		pass
+		print("TARGET FOUND IN SPAWN FUNC")
+		var inst = config.projectile_scene.instantiate()
+		inst.global_position = origin
+		inst.set_target(target)
+		add_child(inst)

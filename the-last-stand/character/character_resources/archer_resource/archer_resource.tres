@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="characterData" load_steps=3 format=3 uid="uid://bey0wivfjnodv"]
+[gd_resource type="Resource" script_class="characterData" load_steps=4 format=3 uid="uid://bey0wivfjnodv"]
 
+[ext_resource type="Resource" uid="uid://cts5elypuqixp" path="res://character/projectiles/skill_resources/arrow.tres" id="1_ksyi3"]
 [ext_resource type="Script" uid="uid://dfpwcdfl4m2no" path="res://character/character_resources/char_resource_base.gd" id="1_phpne"]
 [ext_resource type="SpriteFrames" uid="uid://cqt2boi8nl4da" path="res://art_assets/character_models/characterAnims/archer/archer_anims.tres" id="2_88d0a"]
 
@@ -11,4 +12,5 @@ attack_speed = 3.0
 char_type = "ranged"
 sprite_frames = ExtResource("2_88d0a")
 id = 1
+default_skill = ExtResource("1_ksyi3")
 metadata/_custom_type_script = "uid://dfpwcdfl4m2no"
