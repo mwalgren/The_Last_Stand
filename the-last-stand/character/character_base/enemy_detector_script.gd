@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var projFactory = get_tree().get_first_node_in_group("projectile_factory")
 var target_pool:Array[Area2D]
+var current_target 
 signal enemy_in_range
 signal enemy_out_range
 

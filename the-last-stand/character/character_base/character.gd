@@ -8,12 +8,26 @@ class_name player
 @export var meleeHitbox:Area2D
 @export var enemyDetector:Area2D
 @export var hpBar:ProgressBar
+@export var skillBook:Node2D
+@export var origin_emitter:Node2D
+@onready var projectile_factory = get_tree().get_first_node_in_group("projectile_factory")
 
+
+
+func _process(delta: float) -> void:
+	skillBook.tick_cooldown(delta)
+	var cfg = skillBook.ready_skills()
+	if cfg:
+		var target = projectile_factory.current_target
+		if target:
+			var origin = origin_emitter.get_origin(cfg)
+			if origin : 
+				skillBook.set_cooldown(cfg)
+				animSprite.play("attack")
+				projectile_factory.spawn(cfg, target, origin)
 
 func _ready() -> void:
 	add_to_group("player")
-
-
 
 
 func set_character_data(charData:Resource):
@@ -23,16 +37,11 @@ func set_character_data(charData:Resource):
 	animSprite.play("idle")
 	hpBar.max_value = charData.max_hp
 	hpBar.value = charData.max_hp
+	skillBook.learn_skill(charData.default_skill)
+	skillBook.equip_skill(charData.default_skill)
 	if charData.char_type == "melee":
 		meleeHitbox.monitoring = true
 	else: 
 		meleeHitbox.monitoring = false
 		enemyDetector.scale *= 2
-
-
-func _on_enemy_detector_enemy_in_range() -> void:
-	animSprite.play("attack")
-
-
-func _on_enemy_detector_enemy_out_range() -> void:
-	animSprite.play("idle")
+		
