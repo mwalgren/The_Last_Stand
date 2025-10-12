@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkecnse7vth7k"]
 
-[ext_resource type="Script" uid="uid://bpomh3s225p78" path="res://character/projectiles/skill_resources/skill_scenes/arrow_script.gd" id="1_nxqmw"]
+[ext_resource type="Script" uid="uid://bpomh3s225p78" path="res://character/projectiles/skill_resources/skill_scenes/arrow/arrow_script.gd" id="1_nxqmw"]
 [ext_resource type="Texture2D" uid="uid://v11ywprhebsg" path="res://art_assets/character_models/Archer/Arrow.png" id="2_reihm"]
 
 [sub_resource type="Curve2D" id="Curve2D_0fty6"]

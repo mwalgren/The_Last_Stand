@@ -14,17 +14,25 @@ class_name player
 
 
 
+
+
 func _process(delta: float) -> void:
 	skillBook.tick_cooldown(delta)
 	var cfg = skillBook.ready_skills()
-	if cfg:
-		var target = projectile_factory.current_target
-		if target:
-			var origin = origin_emitter.get_origin(cfg)
-			if origin : 
-				skillBook.set_cooldown(cfg)
-				animSprite.play("attack")
-				projectile_factory.spawn(cfg, target, origin)
+	if !cfg:return
+
+	var target = projectile_factory.current_target
+
+	if !is_instance_valid(projectile_factory.current_target):
+		projectile_factory.current_target = null; return
+
+	var origin = origin_emitter.get_origin(cfg,target)
+	if origin == null:
+		return
+
+	skillBook.set_cooldown(cfg)
+	animSprite.play("attack")
+	projectile_factory.spawn(cfg, target, origin)
 
 func _ready() -> void:
 	add_to_group("player")

@@ -4,7 +4,7 @@ class_name enemy
 @export var enemy_sprite:AnimatedSprite2D
 @export var hurtBox:Area2D
 @export var hpBar:ProgressBar
-
+@export var at_target:Marker2D
 
 
 func _ready() -> void:

@@ -32,7 +32,7 @@ func spawn_enemy(enemyToSpawn):
 
 
 func spawn_time():
-		spawn_timer.wait_time = (5.0 - difficulty)
+		spawn_timer.wait_time = (10.0 - difficulty)
 		spawn_timer.start()
 
 

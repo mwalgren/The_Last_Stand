@@ -61,7 +61,6 @@ metadata/_edit_lock_ = true
 
 [node name="enemy_detector" type="Area2D" parent="."]
 script = ExtResource("4_7vspg")
-metadata/_edit_lock_ = true
 
 [node name="range_finder" type="CollisionShape2D" parent="enemy_detector"]
 shape = SubResource("CircleShape2D_tgjim")

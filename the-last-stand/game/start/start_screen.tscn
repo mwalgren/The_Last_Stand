@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvgxs3fcojsky"]
+[gd_scene load_steps=7 format=3 uid="uid://bvgxs3fcojsky"]
 
 [ext_resource type="Script" uid="uid://tl2ywbeby7kv" path="res://game/start/start_screen_script.gd" id="1_c76sp"]
+[ext_resource type="Texture2D" uid="uid://dibxvix4nkmfk" path="res://art_assets/theme/Buttons/Gray_Buttons_Pixel.png" id="2_c76sp"]
 [ext_resource type="Texture2D" uid="uid://jlro8of1t67n" path="res://art_assets/theme/Buttons/Green_Buttons_Pixel.png" id="2_himu6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_66pef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d017g"]
-atlas = ExtResource("2_himu6")
+atlas = ExtResource("2_c76sp")
 region = Rect2(64.91076, 49.018093, 30.167809, 14.024052)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_himu6"]
+atlas = ExtResource("2_himu6")
+region = Rect2(64.87381, 48.845196, 30.90718, 13.701122)
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -21,8 +26,6 @@ modulate = Color(0.21230483, 0.21230483, 0.21230483, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_66pef")
@@ -40,6 +43,7 @@ offset_bottom = 28.5
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_d017g")
+texture_hover = SubResource("AtlasTexture_himu6")
 stretch_mode = 0
 
 [connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]
