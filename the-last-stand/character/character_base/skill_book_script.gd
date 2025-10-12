@@ -41,6 +41,6 @@ func set_cooldown(config:skillConfig):
 
 func ready_skills() -> skillConfig:
 	for cfg in active_skills:
-		if cooldowns.get(cfg.id, -123) <= 0.0:
+		if cooldowns.get(cfg.id, 5.0) <= 0.0:
 			return cfg
 	return null

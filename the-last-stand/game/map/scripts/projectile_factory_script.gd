@@ -18,3 +18,4 @@ func spawn(config,target,origin):
 		inst.global_position = origin
 		inst.set_target(target)
 		add_child(inst)
+	else:return

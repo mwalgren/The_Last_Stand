@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="skillConfig" load_steps=4 format=3 uid="uid://dn5vgtcugglqp"]
+
+[ext_resource type="PackedScene" uid="uid://deiwbrichumoa" path="res://character/projectiles/skill_resources/skill_scenes/holy_pillar/holy_pillar.tscn" id="1_5d7p5"]
+[ext_resource type="Script" uid="uid://dce06hr47giqe" path="res://character/projectiles/skill_resources/skillConfig.gd" id="1_6lgcu"]
+[ext_resource type="SpriteFrames" uid="uid://bvy2wn7etqib2" path="res://character/projectiles/skill_resources/skill_scenes/holy_pillar/holy_pillar_anims.tres" id="3_eu81e"]
+
+[resource]
+script = ExtResource("1_6lgcu")
+projectile_scene = ExtResource("1_5d7p5")
+sprite_frames = ExtResource("3_eu81e")
+id = "2"
+damage_type = "holy"
+lifetime = 1.5
+max_range = 300.0
+movement_type = "static"
+target_mode = "at_target"
+cooldown = 3.0
+spawn_mode = "at_target"
+rank = 1
+metadata/_custom_type_script = "uid://dce06hr47giqe"

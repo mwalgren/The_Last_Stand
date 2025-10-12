@@ -19,6 +19,7 @@ func take_damage(dmg:int):
 	update_hp_bar(hp)
 	if hp <= 0 :
 		monitoring = false
+		monitorable = false
 		dead = true
 		death()
 
