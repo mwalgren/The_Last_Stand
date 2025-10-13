@@ -10,4 +10,5 @@ armor = 3
 dmg = 5
 enemy_tier = 1
 sprite_frames = ExtResource("2_cufi5")
+baseXP = 5.0
 metadata/_custom_type_script = "uid://dv6b4m2dwnanc"

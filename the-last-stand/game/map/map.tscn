@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://t8gnnnnafxrt"]
+[gd_scene load_steps=39 format=4 uid="uid://t8gnnnnafxrt"]
 
 [ext_resource type="Texture2D" uid="uid://dkfb3h3j8x2jc" path="res://art_assets/tileMaps/Terrain/Water Background color.png" id="1_0vrwh"]
 [ext_resource type="Script" uid="uid://bpyb6q4fqv2pe" path="res://game/map/scripts/map_script.gd" id="1_ox8e6"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://djv5m3j1vsoyq" path="res://game/map/scripts/projectile_factory_script.gd" id="15_cwx5i"]
 [ext_resource type="PackedScene" uid="uid://unbutrohoar4" path="res://enemy/enemy_base/enemy_base.tscn" id="15_wdkll"]
 [ext_resource type="Resource" uid="uid://cuhd82vh2wq7w" path="res://enemy/enemy_resource/skeleton_resource.tres" id="16_m1bfk"]
+[ext_resource type="PackedScene" uid="uid://dapn64f43ptua" path="res://character/castle/castle_scene.tscn" id="20_m1bfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_16fx3"]
 texture = ExtResource("1_0vrwh")
@@ -3153,21 +3154,24 @@ tile_set = SubResource("TileSet_e4vcf")
 
 [node name="playerCastle" type="Node2D" parent="."]
 
-[node name="enemyFactory" type="Node2D" parent="." node_paths=PackedStringArray("spawn_timer", "spawn_loc")]
+[node name="enemyFactory" type="Node2D" parent="." node_paths=PackedStringArray("spawn_timer", "spawn_loc", "gameController")]
 script = ExtResource("14_4i2x0")
 t1_enemy_pool = Array[Resource]([ExtResource("15_06qla"), ExtResource("16_m1bfk")])
 enemy_scene = ExtResource("15_wdkll")
 spawn_timer = NodePath("Timer")
 spawn_loc = NodePath("enemySpawn")
+gameController = NodePath("../gameController")
 
 [node name="enemySpawn" type="Marker2D" parent="enemyFactory"]
 position = Vector2(959, 914)
 
 [node name="Timer" type="Timer" parent="enemyFactory"]
 
-[node name="playerFactory" type="Node2D" parent="."]
+[node name="playerFactory" type="Node2D" parent="." node_paths=PackedStringArray("game_controller")]
 script = ExtResource("13_dbs7f")
 player_scene = ExtResource("14_gym5g")
+game_controller = NodePath("../gameController")
+player_castle = ExtResource("20_m1bfk")
 
 [node name="def_spawn" type="Marker2D" parent="playerFactory"]
 position = Vector2(963, 384)

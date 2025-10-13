@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1jf3uitffwcj"]
+[gd_scene load_steps=13 format=3 uid="uid://d1jf3uitffwcj"]
 
 [ext_resource type="Texture2D" uid="uid://boj30fxnk7jjj" path="res://art_assets/character_models/Archer/Archer_Idle.png" id="1_ammbq"]
 [ext_resource type="Script" uid="uid://cdetil8odrtlp" path="res://game/charSelect/choose_character_script.gd" id="1_b27f6"]
 [ext_resource type="Texture2D" uid="uid://xhsdmmnps5qg" path="res://art_assets/character_models/Monk/Idle.png" id="2_b27f6"]
 [ext_resource type="Resource" uid="uid://bey0wivfjnodv" path="res://character/character_resources/archer_resource/archer_resource.tres" id="2_cjxk2"]
-[ext_resource type="Script" uid="uid://dfpwcdfl4m2no" path="res://character/character_resources/char_resource_base.gd" id="2_vqx6n"]
 [ext_resource type="Resource" uid="uid://ckblwfu8cbd12" path="res://character/character_resources/priest_resource/priest_resource.tres" id="3_ydsan"]
 [ext_resource type="Texture2D" uid="uid://bgb7jn837tl10" path="res://art_assets/character_models/Warrior/Warrior_Idle.png" id="3_yhxof"]
 [ext_resource type="Resource" uid="uid://ckrei67ypt3x6" path="res://character/character_resources/warrior_resource/warrior_resource.tres" id="4_6c7nt"]
@@ -37,7 +36,7 @@ script = ExtResource("1_b27f6")
 archer = NodePath("CanvasLayer/HBoxContainer/Opt1")
 priest = NodePath("CanvasLayer/HBoxContainer/Opt2")
 warrior = NodePath("CanvasLayer/HBoxContainer/Opt3")
-char_pool = Array[ExtResource("2_vqx6n")]([ExtResource("2_cjxk2"), ExtResource("3_ydsan"), ExtResource("4_6c7nt")])
+char_pool = Array[Resource]([ExtResource("2_cjxk2"), ExtResource("3_ydsan"), ExtResource("4_6c7nt")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

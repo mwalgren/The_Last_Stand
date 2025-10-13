@@ -7,6 +7,9 @@ extends Area2D
 var hp:int
 var armor:int
 var dead:bool
+var xpToGive
+
+signal enemyDied(xp:int)
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -28,4 +31,5 @@ func update_hp_bar(newHpVal):
 		hpBar.value = clamp(newHpVal,0,hpBar.max_value) 
 
 func death():
+	enemyDied.emit(xpToGive)
 	get_parent().queue_free()

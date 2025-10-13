@@ -23,7 +23,7 @@ hpBar = NodePath("ProgressBar")
 at_target = NodePath("proj_ground_target")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &"attack"
+animation = &""
 metadata/_edit_lock_ = true
 
 [node name="hurtBox" type="Area2D" parent="." node_paths=PackedStringArray("hpBar")]

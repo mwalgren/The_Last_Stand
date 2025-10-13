@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_phpne")
+name = "Archer"
 max_hp = 100
 dmg = 5
 attack_speed = 3.0

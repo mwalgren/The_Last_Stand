@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dapn64f43ptua"]
+
+[ext_resource type="Script" uid="uid://ciplfb53u1d1t" path="res://character/castle/castle_scene_script.gd" id="1_68ee5"]
+[ext_resource type="Texture2D" uid="uid://wesrsb2wpy2r" path="res://art_assets/tileMaps/Buildings/Black Buildings/Castle.png" id="1_p52my"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68ee5"]
+size = Vector2(323, 224)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ir72i"]
+radius = 166.04819
+
+[node name="CastleScene" type="CharacterBody2D" node_paths=PackedStringArray("castleHP", "caslteHurtBox")]
+script = ExtResource("1_68ee5")
+castleHP = NodePath("ProgressBar")
+caslteHurtBox = NodePath("hurtBox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p52my")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = -136.0
+offset_right = 76.5
+offset_bottom = -109.0
+grow_horizontal = 2
+show_percentage = false
+
+[node name="hurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
+position = Vector2(-1.5, 18)
+shape = SubResource("RectangleShape2D_68ee5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ir72i")
+debug_color = Color(0.96163696, 0.19111723, 0.13310844, 0.41960785)

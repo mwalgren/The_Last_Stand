@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_sl85f")
+name = "Priest"
 max_hp = 75
 armor = 3
 dmg = 3
