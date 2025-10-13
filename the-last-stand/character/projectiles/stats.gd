@@ -7,4 +7,5 @@ class_name weaponStats
 @export var speed:float
 @export var lifetime:float
 @export var pierce:int
-@export var onhit:bool
+@export var onHit:bool
+@export var onHitType:String

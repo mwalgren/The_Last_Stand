@@ -10,7 +10,8 @@ var starting_pos:Vector2
 var target:Node2D
 var speed:float
 var lifetime:float
-
+var onHit:bool
+var onHitType:String
 
 
 func _ready() -> void:
@@ -29,7 +30,6 @@ func set_target(t:Node2D):
 	target = t
 	if target:
 		curve.clear_points()
-		#var starting_pos_translated = global_position
 		var target_pos_translated = to_local(target.global_position)
 		curve.add_point(Vector2.ZERO)
 		curve.add_point(target_pos_translated)
@@ -50,6 +50,9 @@ func set_data(stats:Resource):
 	dmg = stats.damage
 	lifetime = stats.lifetime
 	speed = stats.speed
+	
+	if !is_inside_tree():
+		await ready
 	
 	var timer := get_tree().create_timer(lifetime)
 	timer.timeout.connect(func():queue_free());
