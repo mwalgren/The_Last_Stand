@@ -22,18 +22,17 @@ func spawn(config,target,origin):
 
 func snapshot_final(cfg:skillConfig):
 	var s = weaponStats.new()
-	var m = modStats.new()
 
 	#damage and mods 
 	s.damage = cfg.damage
-	s.damage += m.damageMod
+	#s.damage += m.damageMod
 
 	#lifetime/how long things last on the scene + mods 
 	s.lifetime = cfg.lifetime
-	s.lifetime += m.lifeTimeMod
+	#s.lifetime += m.lifeTimeMod
 
 	#projectile speed
 	s.speed = cfg.speed
-	s.speed += m.speedMod
+	#s.speed += m.speedMod
 	
 	return s

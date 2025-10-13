@@ -8,11 +8,3 @@ class_name modStats
 @export var onHit:bool
 @export var onHitType:String
 @export var rarity:String
-
-
-func upgrade_stats(currStats:modStats, upgradeStatMods:modStats):
-	currStats.damageMod += upgradeStatMods.damageMod
-	currStats.speedMod += upgradeStatMods.speedMod
-	currStats.lifeTimeMod += upgradeStatMods.lifeTimeMod
-	currStats.onHit = upgradeStatMods.onHit
-	currStats.onHitType = upgradeStatMods.onHitType
