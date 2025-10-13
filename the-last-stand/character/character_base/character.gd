@@ -7,11 +7,10 @@ class_name player
 @export var hurtBox:Area2D
 @export var meleeHitbox:Area2D
 @export var enemyDetector:Area2D
-@export var hpBar:ProgressBar
 @export var skillBook:Node2D
 @export var origin_emitter:Node2D
 @onready var projectile_factory = get_tree().get_first_node_in_group("projectile_factory")
-
+@export var playerStats:Node2D
 
 
 
@@ -43,8 +42,6 @@ func set_character_data(charData:Resource):
 	hurtBox.armor = charData.armor
 	animSprite.sprite_frames = charData.sprite_frames
 	animSprite.play("idle")
-	hpBar.max_value = charData.max_hp
-	hpBar.value = charData.max_hp
 	skillBook.learn_skill(charData.default_skill)
 	skillBook.equip_skill(charData.default_skill)
 	if charData.char_type == "melee":
@@ -52,4 +49,3 @@ func set_character_data(charData:Resource):
 	else: 
 		meleeHitbox.monitoring = false
 		enemyDetector.scale *= 2
-		

@@ -1,6 +1,7 @@
 extends Resource
 class_name characterData
 
+@export var name:String
 @export var max_hp:int
 @export var armor:int
 @export var dmg:int
