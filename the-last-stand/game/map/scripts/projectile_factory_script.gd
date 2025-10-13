@@ -11,9 +11,7 @@ func _enter_tree() -> void:
 
 
 func spawn(config,target,origin):
-	print("spawning attack")
 	if target:
-		print("TARGET FOUND IN SPAWN FUNC")
 		var inst = config.projectile_scene.instantiate()
 		inst.set_data(snapshot_final(config))
 		inst.global_position = origin
@@ -24,7 +22,18 @@ func spawn(config,target,origin):
 
 func snapshot_final(cfg:skillConfig):
 	var s = weaponStats.new()
-	s.damage = cfg.damage #* damage_multi
+	var m = modStats.new()
+
+	#damage and mods 
+	s.damage = cfg.damage
+	s.damage += m.damageMod
+
+	#lifetime/how long things last on the scene + mods 
 	s.lifetime = cfg.lifetime
+	s.lifetime += m.lifeTimeMod
+
+	#projectile speed
 	s.speed = cfg.speed
+	s.speed += m.speedMod
+	
 	return s
