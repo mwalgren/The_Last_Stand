@@ -4,11 +4,12 @@ extends Path2D
 @export var sprite:Sprite2D
 @export var pathFollow:PathFollow2D
 
-var dmg:int = 60
+var dmg:float
 var target_pos
 var starting_pos:Vector2
 var target:Node2D
-var speed:int = 50
+var speed:float
+var lifetime:float
 
 
 
@@ -43,3 +44,12 @@ func _on_hit_area_area_entered(area: Area2D) -> void:
 		if area.has_method("take_damage"):
 			area.take_damage(dmg)
 			queue_free()
+
+
+func set_data(stats:Resource):
+	dmg = stats.damage
+	lifetime = stats.lifetime
+	speed = stats.speed
+	
+	var timer := get_tree().create_timer(lifetime)
+	timer.timeout.connect(func():queue_free());

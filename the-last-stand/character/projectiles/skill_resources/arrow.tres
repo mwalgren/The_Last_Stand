@@ -16,4 +16,6 @@ explode_on = "null"
 cooldown = 3.0
 spawn_mode = "self"
 rank = 1
+speed = 200.0
+damage = 5.0
 metadata/_custom_type_script = "uid://dce06hr47giqe"

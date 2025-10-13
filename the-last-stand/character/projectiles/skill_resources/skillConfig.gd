@@ -15,3 +15,5 @@ class_name skillConfig
 @export var cooldown:float
 @export var spawn_mode:String
 @export var rank:int
+@export var speed:float
+@export var damage:float
