@@ -4,6 +4,9 @@ extends Node2D
 @export var state_timer:Timer
 @export var enemy_factory:Node2D
 @onready var playerStats:Node2D
+@export var upgradePanel:CanvasLayer
+@export var levelUpScene:PackedScene
+@export var upgradePool:Node2D
 
 var CURRENT_STATE = null
 var NEXT_STATE = null
@@ -35,6 +38,7 @@ func _enter_state(state):
 			label.text = "COUNTDOWN"
 			NEXT_STATE = GAMESTATE.ACTIVE
 		GAMESTATE.ACTIVE:
+			get_tree().paused = false
 			state_timer.wait_time = 90.00
 			state_timer.start()
 			enemy_factory.spawn_time()
@@ -50,14 +54,15 @@ func _enter_state(state):
 			state_timer.wait_time = 30.00
 			state_timer.start()
 			label.text = "REWARDS"
-			NEXT_STATE = GAMESTATE.INTERMISSION
+			NEXT_STATE = GAMESTATE.PREP
 		GAMESTATE.BOSS:
 			label.text = CURRENT_STATE
 		GAMESTATE.INTERMISSION:
-			state_timer.wait_time = 10.00
+			get_tree().paused = true
+			state_timer.wait_time = 20.00
 			state_timer.start()
 			label.text = "INTERMISSION"
-			NEXT_STATE = GAMESTATE.COUNTDOWN
+			NEXT_STATE = GAMESTATE.ACTIVE
 
 
 func _on_timer_timeout() -> void:
@@ -71,4 +76,7 @@ func on_enemy_death(xp:int):
 
 
 func on_level_up():
-	pass
+	_set_state(GAMESTATE.INTERMISSION)
+	var upgradeScene = levelUpScene.instantiate()
+	upgradeScene.show_options(upgradePool.pick(3))
+	upgradePanel.add_child(upgradeScene)

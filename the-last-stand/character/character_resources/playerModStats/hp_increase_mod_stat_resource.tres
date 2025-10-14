@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="modStats" load_steps=3 format=3 uid="uid://cs0s805vqcyf3"]
+
+[ext_resource type="Texture2D" uid="uid://p3ih5gj6dvp2" path="res://art_assets/mod_icon_resources/hp/fb659.png" id="1_1cqmh"]
+[ext_resource type="Script" uid="uid://xtg641t7ofyh" path="res://character/character_resources/playerModStats/stat_mod_resource.gd" id="1_dxj8k"]
+
+[resource]
+script = ExtResource("1_dxj8k")
+rarity = "Common"
+id = "red_heart"
+hp = 10
+iconTexture = ExtResource("1_1cqmh")
+title = "Red Heart"
+description = "Increases Hit Points by 10"
+metadata/_custom_type_script = "uid://xtg641t7ofyh"
