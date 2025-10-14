@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://t8gnnnnafxrt"]
+[gd_scene load_steps=42 format=4 uid="uid://t8gnnnnafxrt"]
 
 [ext_resource type="Texture2D" uid="uid://dkfb3h3j8x2jc" path="res://art_assets/tileMaps/Terrain/Water Background color.png" id="1_0vrwh"]
 [ext_resource type="Script" uid="uid://bpyb6q4fqv2pe" path="res://game/map/scripts/map_script.gd" id="1_ox8e6"]
@@ -22,6 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://unbutrohoar4" path="res://enemy/enemy_base/enemy_base.tscn" id="15_wdkll"]
 [ext_resource type="Resource" uid="uid://cuhd82vh2wq7w" path="res://enemy/enemy_resource/skeleton_resource.tres" id="16_m1bfk"]
 [ext_resource type="PackedScene" uid="uid://dapn64f43ptua" path="res://character/castle/castle_scene.tscn" id="20_m1bfk"]
+[ext_resource type="Script" uid="uid://cui3lc01fyvrn" path="res://game/map/scripts/upgrade_pool_script.gd" id="23_841mk"]
+[ext_resource type="PackedScene" uid="uid://bsb0vvqcymr7n" path="res://game/levelUpScene/levelUpScene.tscn" id="23_dbs7f"]
+[ext_resource type="Resource" uid="uid://cs0s805vqcyf3" path="res://character/character_resources/playerModStats/hp_increase_mod_stat_resource.tres" id="24_ao0ru"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_16fx3"]
 texture = ExtResource("1_0vrwh")
@@ -3188,11 +3191,18 @@ position = Vector2(961, 201)
 [node name="projectileFactory" type="Node2D" parent="."]
 script = ExtResource("15_cwx5i")
 
-[node name="gameController" type="Node2D" parent="." node_paths=PackedStringArray("label", "state_timer", "enemy_factory")]
+[node name="gameController" type="Node2D" parent="." node_paths=PackedStringArray("label", "state_timer", "enemy_factory", "upgradePanel", "upgradePool")]
 script = ExtResource("2_4i2x0")
 label = NodePath("Label")
 state_timer = NodePath("Timer")
 enemy_factory = NodePath("../enemyFactory")
+upgradePanel = NodePath("upgradePanel")
+levelUpScene = ExtResource("23_dbs7f")
+upgradePool = NodePath("upgradePool")
+
+[node name="upgradePool" type="Node2D" parent="gameController"]
+script = ExtResource("23_841mk")
+upgrade_pool = Array[Resource]([ExtResource("24_ao0ru")])
 
 [node name="Label" type="Label" parent="gameController"]
 anchors_preset = 8
@@ -3210,6 +3220,8 @@ theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="gameController"]
+
+[node name="upgradePanel" type="CanvasLayer" parent="gameController"]
 
 [connection signal="timeout" from="enemyFactory/Timer" to="enemyFactory" method="_on_timer_timeout"]
 [connection signal="timeout" from="gameController/Timer" to="gameController" method="_on_timer_timeout"]
