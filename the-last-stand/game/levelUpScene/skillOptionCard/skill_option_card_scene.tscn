@@ -2,15 +2,24 @@
 
 [ext_resource type="Script" uid="uid://p1cruiyx8vcn" path="res://game/levelUpScene/skillOptionCard/skill_option_card_scene.gd" id="1_608ol"]
 
-[node name="SkillOptionCardScene" type="Panel" node_paths=PackedStringArray("icon", "title", "description")]
+[node name="SkillOptionCardScene" type="Panel" node_paths=PackedStringArray("icon", "title", "description", "selectionButton")]
 custom_minimum_size = Vector2(250, 350)
 script = ExtResource("1_608ol")
 icon = NodePath("option1/icon")
 title = NodePath("option1/title")
 description = NodePath("option1/description")
+selectionButton = NodePath("confirm")
 
 [node name="TextureRect" type="ColorRect" parent="."]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="confirm" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="icon" type="TextureRect" parent="option1"]
@@ -43,3 +53,5 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "example description"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="confirm" to="." method="_on_confirm_pressed"]

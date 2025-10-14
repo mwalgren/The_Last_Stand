@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://cstl2ayt7m6j7"]
+[gd_scene load_steps=13 format=3 uid="uid://cstl2ayt7m6j7"]
 
 [ext_resource type="Script" uid="uid://duo21w8s7x3x2" path="res://character/character_base/character.gd" id="1_1l1n4"]
-[ext_resource type="SpriteFrames" uid="uid://cqt2boi8nl4da" path="res://art_assets/character_models/characterAnims/archer/archer_anims.tres" id="2_783pb"]
+[ext_resource type="SpriteFrames" uid="uid://dfe0vq20kolhe" path="res://art_assets/character_models/characterAnims/priest/priest_anims.tres" id="2_sm276"]
 [ext_resource type="Script" uid="uid://ldevqws11aew" path="res://character/character_base/melee_hit_box.gd" id="3_hx151"]
 [ext_resource type="Script" uid="uid://3g53umh4rqv5" path="res://character/character_base/hurt_box_script.gd" id="3_ugqs2"]
 [ext_resource type="Script" uid="uid://b3yeefh355l8" path="res://character/character_base/enemy_detector_script.gd" id="4_7vspg"]
 [ext_resource type="Script" uid="uid://d1gt8gjeakfry" path="res://character/character_base/skill_book_script.gd" id="5_oig03"]
 [ext_resource type="Script" uid="uid://b7pk8g5mbttrl" path="res://character/character_base/resolve_origin_emitter.gd" id="6_mnoah"]
 [ext_resource type="Script" uid="uid://btxu6yffw71gv" path="res://character/character_base/player_stats_script.gd" id="8_66xrd"]
+[ext_resource type="Script" uid="uid://kbe8qq5ac2me" path="res://character/character_base/mod_bank_script.gd" id="8_sm276"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
 size = Vector2(75, 90)
@@ -18,7 +19,7 @@ size = Vector2(70, 97)
 [sub_resource type="CircleShape2D" id="CircleShape2D_tgjim"]
 radius = 274.06567
 
-[node name="character" type="CharacterBody2D" node_paths=PackedStringArray("animSprite", "hurtBox", "meleeHitbox", "enemyDetector", "skillBook", "origin_emitter", "playerStats")]
+[node name="character" type="CharacterBody2D" node_paths=PackedStringArray("animSprite", "hurtBox", "meleeHitbox", "enemyDetector", "skillBook", "origin_emitter", "playerStats", "modBank")]
 script = ExtResource("1_1l1n4")
 animSprite = NodePath("AnimatedSprite2D")
 hurtBox = NodePath("HurtBox")
@@ -27,13 +28,12 @@ enemyDetector = NodePath("enemy_detector")
 skillBook = NodePath("skillBook")
 origin_emitter = NodePath("resolve_origin_emitter")
 playerStats = NodePath("playerStats")
+modBank = NodePath("modBank")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_783pb")
+sprite_frames = ExtResource("2_sm276")
 animation = &"attack"
 autoplay = "idle"
-frame = 5
-frame_progress = 0.6829042
 metadata/_edit_lock_ = true
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -75,6 +75,9 @@ position = Vector2(36, -23)
 
 [node name="playerStats" type="Node2D" parent="."]
 script = ExtResource("8_66xrd")
+
+[node name="modBank" type="Node2D" parent="."]
+script = ExtResource("8_sm276")
 
 [connection signal="area_entered" from="meleeHitBox" to="meleeHitBox" method="_on_area_entered"]
 [connection signal="area_entered" from="enemy_detector" to="enemy_detector" method="_on_area_entered"]

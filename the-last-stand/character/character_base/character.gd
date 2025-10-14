@@ -11,7 +11,7 @@ class_name player
 @export var origin_emitter:Node2D
 @onready var projectile_factory = get_tree().get_first_node_in_group("projectile_factory")
 @export var playerStats:Node2D
-
+@export var modBank:Node2D
 
 
 
@@ -30,7 +30,6 @@ func _process(delta: float) -> void:
 		return
 
 	skillBook.set_cooldown(cfg)
-	animSprite.play("attack")
 	projectile_factory.spawn(cfg, target, origin)
 
 func _ready() -> void:
@@ -49,3 +48,8 @@ func set_character_data(charData:Resource):
 	else: 
 		meleeHitbox.monitoring = false
 		enemyDetector.scale *= 2
+
+
+
+func apply_mod(mod:Resource):
+	modBank.add_mod(mod)

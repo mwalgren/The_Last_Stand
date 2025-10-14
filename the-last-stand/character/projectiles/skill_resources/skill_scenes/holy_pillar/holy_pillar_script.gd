@@ -4,9 +4,8 @@ extends Node2D
 @export var animSprite:AnimatedSprite2D
 var dmg:float 
 var target
-var size:float
 var lifetime:float
-var speed:float
+@onready var base_scale := self.scale
 
 
 func _ready() -> void:
@@ -26,10 +25,12 @@ func set_target(t:Node2D):
 func set_data(stats:Resource):
 	dmg = stats.damage
 	lifetime = stats.lifetime
-	speed = stats.speed
+	var mult = (stats.size_mult)
+	self.scale = base_scale * mult
 	
 	if !is_inside_tree():
 		await ready
 
+	if !is_inside_tree(): await ready
 	var timer := get_tree().create_timer(lifetime)
 	timer.timeout.connect(func():queue_free());
