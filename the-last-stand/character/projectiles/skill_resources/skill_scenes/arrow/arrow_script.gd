@@ -12,8 +12,7 @@ var speed:float
 var lifetime:float
 var onHit:bool
 var onHitType:String
-
-
+var size = scale
 func _ready() -> void:
 	add_to_group("player_weapon")
 
@@ -50,6 +49,7 @@ func set_data(stats:Resource):
 	dmg = stats.damage
 	lifetime = stats.lifetime
 	speed = stats.speed
+	size = stats.size
 	
 	if !is_inside_tree():
 		await ready

@@ -7,6 +7,9 @@ extends Node2D
 @export var upgradePanel:CanvasLayer
 @export var levelUpScene:PackedScene
 @export var upgradePool:Node2D
+@onready var playerInst = get_tree().get_first_node_in_group("player")
+
+var upgradeScene
 
 var CURRENT_STATE = null
 var NEXT_STATE = null
@@ -73,10 +76,25 @@ func on_enemy_death(xp:int):
 	print("on enemy death triggered")
 	if playerStats:
 		playerStats.gainXP(xp)
+		on_level_up()
 
 
 func on_level_up():
 	_set_state(GAMESTATE.INTERMISSION)
-	var upgradeScene = levelUpScene.instantiate()
+	upgradeScene = levelUpScene.instantiate()
+	upgradeScene.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	upgradeScene.show_options(upgradePool.pick(3))
 	upgradePanel.add_child(upgradeScene)
+	upgradeScene.add_mod.connect(apply_mod, CONNECT_ONE_SHOT)
+
+
+func apply_mod(mod_id:String):
+	var mod = upgradePool.get_mod_by_id(mod_id)
+	print(mod)
+	if mod: 
+		playerInst.apply_mod(mod)
+		print("applied mod", mod)
+	if is_instance_valid(upgradeScene):
+		upgradeScene.queue_free()
+		upgradeScene = null
+	_set_state(GAMESTATE.ACTIVE)

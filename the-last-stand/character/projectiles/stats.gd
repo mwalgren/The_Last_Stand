@@ -9,3 +9,4 @@ class_name weaponStats
 @export var pierce:int
 @export var onHit:bool
 @export var onHitType:String
+@export var size_mult:float

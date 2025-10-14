@@ -14,3 +14,4 @@ class_name modStats
 @export var iconTexture:Texture
 @export var title:String
 @export var description:String
+@export var size:float

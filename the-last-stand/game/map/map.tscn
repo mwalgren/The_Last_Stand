@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://t8gnnnnafxrt"]
+[gd_scene load_steps=43 format=4 uid="uid://t8gnnnnafxrt"]
 
 [ext_resource type="Texture2D" uid="uid://dkfb3h3j8x2jc" path="res://art_assets/tileMaps/Terrain/Water Background color.png" id="1_0vrwh"]
 [ext_resource type="Script" uid="uid://bpyb6q4fqv2pe" path="res://game/map/scripts/map_script.gd" id="1_ox8e6"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://cui3lc01fyvrn" path="res://game/map/scripts/upgrade_pool_script.gd" id="23_841mk"]
 [ext_resource type="PackedScene" uid="uid://bsb0vvqcymr7n" path="res://game/levelUpScene/levelUpScene.tscn" id="23_dbs7f"]
 [ext_resource type="Resource" uid="uid://cs0s805vqcyf3" path="res://character/character_resources/playerModStats/hp_increase_mod_stat_resource.tres" id="24_ao0ru"]
+[ext_resource type="Resource" uid="uid://b2wlniktxxtcv" path="res://character/character_resources/playerModStats/size_mod_resource.tres" id="26_16fx3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_16fx3"]
 texture = ExtResource("1_0vrwh")
@@ -3202,7 +3203,7 @@ upgradePool = NodePath("upgradePool")
 
 [node name="upgradePool" type="Node2D" parent="gameController"]
 script = ExtResource("23_841mk")
-upgrade_pool = Array[Resource]([ExtResource("24_ao0ru")])
+upgrade_pool = Array[Resource]([ExtResource("24_ao0ru"), ExtResource("26_16fx3")])
 
 [node name="Label" type="Label" parent="gameController"]
 anchors_preset = 8

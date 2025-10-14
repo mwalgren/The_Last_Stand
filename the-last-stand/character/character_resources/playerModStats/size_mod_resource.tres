@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="modStats" load_steps=3 format=3 uid="uid://b2wlniktxxtcv"]
+
+[ext_resource type="Texture2D" uid="uid://dij0orjvpfe3a" path="res://art_assets/mod_icon_resources/32x32/fb877.png" id="1_pyn5t"]
+[ext_resource type="Script" uid="uid://xtg641t7ofyh" path="res://character/character_resources/playerModStats/stat_mod_resource.gd" id="1_qtcfn"]
+
+[resource]
+script = ExtResource("1_qtcfn")
+rarity = "Rare"
+id = "size_by_100"
+iconTexture = ExtResource("1_pyn5t")
+title = "Huge Spell Size"
+description = "Increase your spell size by 100%"
+size = 2.0
+metadata/_custom_type_script = "uid://xtg641t7ofyh"

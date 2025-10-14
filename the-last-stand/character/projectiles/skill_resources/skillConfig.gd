@@ -17,3 +17,4 @@ class_name skillConfig
 @export var rank:int
 @export var speed:float
 @export var damage:float
+@export var size:float
