@@ -1,18 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dapn64f43ptua"]
+[gd_scene load_steps=8 format=3 uid="uid://dapn64f43ptua"]
 
 [ext_resource type="Script" uid="uid://ciplfb53u1d1t" path="res://character/castle/castle_scene_script.gd" id="1_68ee5"]
 [ext_resource type="Texture2D" uid="uid://wesrsb2wpy2r" path="res://art_assets/tileMaps/Buildings/Black Buildings/Castle.png" id="1_p52my"]
+[ext_resource type="Script" uid="uid://35uattb1akt1" path="res://character/castle/hurt_box_script.gd" id="3_ir72i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ir72i"]
+bg_color = Color(0.14586782, 0.14586785, 0.1458678, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g21jc"]
+bg_color = Color(0.9843137, 0.047058824, 0.18431373, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68ee5"]
-size = Vector2(323, 224)
+size = Vector2(348, 236)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ir72i"]
-radius = 166.04819
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir72i"]
+size = Vector2(307, 208)
 
-[node name="CastleScene" type="CharacterBody2D" node_paths=PackedStringArray("castleHP", "caslteHurtBox")]
+[node name="CastleScene" type="CharacterBody2D" node_paths=PackedStringArray("castleHP", "castleHurtBox")]
 script = ExtResource("1_68ee5")
 castleHP = NodePath("ProgressBar")
-caslteHurtBox = NodePath("hurtBox")
+castleHurtBox = NodePath("hurtBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_p52my")
@@ -26,14 +33,21 @@ offset_top = -136.0
 offset_right = 76.5
 offset_bottom = -109.0
 grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ir72i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_g21jc")
 show_percentage = false
 
-[node name="hurtBox" type="Area2D" parent="."]
+[node name="hurtBox" type="Area2D" parent="." node_paths=PackedStringArray("hpBar")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_ir72i")
+hpBar = NodePath("../ProgressBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
-position = Vector2(-1.5, 18)
+position = Vector2(1, 24)
 shape = SubResource("RectangleShape2D_68ee5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ir72i")
+position = Vector2(-1.5, 18)
+shape = SubResource("RectangleShape2D_ir72i")
 debug_color = Color(0.96163696, 0.19111723, 0.13310844, 0.41960785)
