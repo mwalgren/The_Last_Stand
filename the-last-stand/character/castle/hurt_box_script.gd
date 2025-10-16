@@ -17,7 +17,7 @@ func take_damage(dmg:int):
 		death()
 
 func death():
-	queue_free()
+	get_parent().queue_free()
 	#get_tree().change_scene_to_file()
 
 func update_hp_bar(value):
