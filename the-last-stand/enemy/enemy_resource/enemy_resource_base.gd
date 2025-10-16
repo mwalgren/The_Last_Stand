@@ -8,3 +8,4 @@ class_name enemyBase
 @export var enemy_tier:int
 @export var sprite_frames:SpriteFrames
 @export var baseXP:float
+@export var attack_speed:float

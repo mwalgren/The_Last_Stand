@@ -27,6 +27,7 @@ func set_enemy_data(enemyData:Resource):
 	hpBar.value = enemyData.hp
 	hurtBox.xpToGive = enemyData.baseXP
 	hitBox.dmg = enemyData.dmg
+	hitBox.attack_speed = enemyData.attack_speed
 
 
 
@@ -56,7 +57,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_hit_box_player_in_range() -> void:
 	moving = false
-	set_anim_state(STATE.ATTACKING)
 
 
 func set_anim_state(state:STATE):
@@ -73,5 +73,5 @@ func set_anim_state(state:STATE):
 			enemy_sprite.play("idle")
 
 
-func _on_hit_box_player_out_of_range() -> void:
-	pass
+func _on_hit_box_attack_anim() -> void:
+	set_anim_state(STATE.ATTACKING)

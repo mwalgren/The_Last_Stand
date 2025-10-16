@@ -30,7 +30,7 @@ pathTimer = NodePath("Timer")
 hitBox = NodePath("hitBox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &"walk"
+animation = &""
 metadata/_edit_lock_ = true
 
 [node name="hurtBox" type="Area2D" parent="." node_paths=PackedStringArray("hpBar")]
@@ -42,15 +42,18 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_8jksf")
 metadata/_edit_lock_ = true
 
-[node name="hitBox" type="Area2D" parent="."]
+[node name="hitBox" type="Area2D" parent="." node_paths=PackedStringArray("attack_timer")]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("3_xjn4b")
+attack_timer = NodePath("Timer")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 shape = SubResource("RectangleShape2D_exath")
 debug_color = Color(0.9975118, 0, 0.1742886, 0.41960785)
+
+[node name="Timer" type="Timer" parent="hitBox"]
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -23.0
@@ -80,6 +83,7 @@ autostart = true
 [connection signal="area_entered" from="hurtBox" to="hurtBox" method="_on_area_entered"]
 [connection signal="area_entered" from="hitBox" to="hitBox" method="_on_area_entered"]
 [connection signal="area_exited" from="hitBox" to="hitBox" method="_on_area_exited"]
+[connection signal="attack_anim" from="hitBox" to="." method="_on_hit_box_attack_anim"]
 [connection signal="player_in_range" from="hitBox" to="." method="_on_hit_box_player_in_range"]
-[connection signal="player_out_of_range" from="hitBox" to="." method="_on_hit_box_player_out_of_range"]
+[connection signal="timeout" from="hitBox/Timer" to="hitBox" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
