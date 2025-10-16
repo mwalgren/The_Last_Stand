@@ -3,6 +3,7 @@ extends Path2D
 @export var hitBox:Area2D
 @export var sprite:Sprite2D
 @export var pathFollow:PathFollow2D
+@onready var base_scale := self.scale
 
 var dmg:float
 var target_pos
@@ -49,7 +50,11 @@ func set_data(stats:Resource):
 	dmg = stats.damage
 	lifetime = stats.lifetime
 	speed = stats.speed
-	size = stats.size
+	var mult = (stats.size_mult)
+	self.scale = base_scale * mult
+	
+	if !is_inside_tree():
+		await ready
 	
 	if !is_inside_tree():
 		await ready

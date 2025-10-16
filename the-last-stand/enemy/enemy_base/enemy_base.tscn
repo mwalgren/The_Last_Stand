@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://unbutrohoar4"]
+[gd_scene load_steps=9 format=3 uid="uid://unbutrohoar4"]
 
 [ext_resource type="Script" uid="uid://ooy6jnq3bxe2" path="res://enemy/enemy_base/enemy_base_script.gd" id="1_xjn4b"]
+[ext_resource type="Script" uid="uid://bk0sttp47cyq8" path="res://enemy/enemy_base/hit_box_script.gd" id="3_xjn4b"]
 [ext_resource type="Script" uid="uid://5nwwlkom28ch" path="res://enemy/enemy_base/hurt_box_script.gd" id="4_ykusa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jksf"]
-size = Vector2(86, 68)
+size = Vector2(66, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exath"]
+size = Vector2(94, 80)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1spyg"]
 bg_color = Color(0.116740875, 0.116740905, 0.116740815, 1)
@@ -13,17 +17,20 @@ bg_color = Color(0.116740875, 0.116740905, 0.116740815, 1)
 bg_color = Color(0.80531037, 0.16085169, 0.18800455, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1spyg"]
-radius = 40.0
+radius = 13.038404
 
-[node name="EnemyBase" type="CharacterBody2D" node_paths=PackedStringArray("enemy_sprite", "hurtBox", "hpBar", "at_target")]
+[node name="EnemyBase" type="CharacterBody2D" node_paths=PackedStringArray("enemy_sprite", "hurtBox", "hpBar", "at_target", "agent", "pathTimer", "hitBox")]
 script = ExtResource("1_xjn4b")
 enemy_sprite = NodePath("AnimatedSprite2D")
 hurtBox = NodePath("hurtBox")
 hpBar = NodePath("ProgressBar")
 at_target = NodePath("proj_ground_target")
+agent = NodePath("NavigationAgent2D")
+pathTimer = NodePath("Timer")
+hitBox = NodePath("hitBox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &""
+animation = &"walk"
 metadata/_edit_lock_ = true
 
 [node name="hurtBox" type="Area2D" parent="." node_paths=PackedStringArray("hpBar")]
@@ -32,13 +39,18 @@ hpBar = NodePath("../ProgressBar")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
-position = Vector2(-9, -2)
 shape = SubResource("RectangleShape2D_8jksf")
 metadata/_edit_lock_ = true
 
 [node name="hitBox" type="Area2D" parent="."]
-visible = false
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_xjn4b")
 metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+shape = SubResource("RectangleShape2D_exath")
+debug_color = Color(0.9975118, 0, 0.1742886, 0.41960785)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -23.0
@@ -55,6 +67,19 @@ shape = SubResource("CircleShape2D_1spyg")
 metadata/_edit_lock_ = true
 
 [node name="proj_ground_target" type="Marker2D" parent="."]
-position = Vector2(0, 40)
+position = Vector2(0, 33)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 8.0
+target_desired_distance = 32.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5799999999999996
+autostart = true
 
 [connection signal="area_entered" from="hurtBox" to="hurtBox" method="_on_area_entered"]
+[connection signal="area_entered" from="hitBox" to="hitBox" method="_on_area_entered"]
+[connection signal="area_exited" from="hitBox" to="hitBox" method="_on_area_exited"]
+[connection signal="player_in_range" from="hitBox" to="." method="_on_hit_box_player_in_range"]
+[connection signal="player_out_of_range" from="hitBox" to="." method="_on_hit_box_player_out_of_range"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

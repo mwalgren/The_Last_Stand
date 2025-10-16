@@ -76,7 +76,7 @@ func on_enemy_death(xp:int):
 	print("on enemy death triggered")
 	if playerStats:
 		playerStats.gainXP(xp)
-		on_level_up()
+
 
 
 func on_level_up():
