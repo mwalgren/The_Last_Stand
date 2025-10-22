@@ -5960,8 +5960,8 @@ horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(969, 505)
-zoom = Vector2(0.5, 0.5)
-metadata/_edit_lock_ = true
+zoom = Vector2(0.75, 0.75)
+position_smoothing_enabled = true
 
 [node name="Path1" type="NavigationRegion2D" parent="."]
 position = Vector2(62, 33)
@@ -5973,8 +5973,7 @@ navigation_polygon = SubResource("NavigationPolygon_6opfo")
 metadata/_edit_lock_ = true
 
 [node name="Goal" type="Node2D" parent="."]
-position = Vector2(953, 126)
-metadata/_edit_lock_ = true
+position = Vector2(956, 136)
 
 [node name="Area2D" type="Area2D" parent="Goal"]
 metadata/_edit_lock_ = true

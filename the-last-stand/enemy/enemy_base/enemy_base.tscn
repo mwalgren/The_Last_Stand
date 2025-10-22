@@ -7,8 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jksf"]
 size = Vector2(66, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_exath"]
-size = Vector2(94, 80)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjn4b"]
+radius = 51.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1spyg"]
 bg_color = Color(0.116740875, 0.116740905, 0.116740815, 1)
@@ -29,6 +29,13 @@ agent = NodePath("NavigationAgent2D")
 pathTimer = NodePath("Timer")
 hitBox = NodePath("hitBox")
 
+[node name="dmgInts" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -77.0
+offset_right = 18.0
+offset_bottom = -54.0
+horizontal_alignment = 1
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 animation = &""
 metadata/_edit_lock_ = true
@@ -42,16 +49,19 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_8jksf")
 metadata/_edit_lock_ = true
 
-[node name="hitBox" type="Area2D" parent="." node_paths=PackedStringArray("attack_timer")]
+[node name="hitBox" type="Area2D" parent="." node_paths=PackedStringArray("attack_timer", "dmgIntLabel")]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("3_xjn4b")
 attack_timer = NodePath("Timer")
+dmgIntLabel = NodePath("../dmgInts")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
-shape = SubResource("RectangleShape2D_exath")
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_xjn4b")
 debug_color = Color(0.9975118, 0, 0.1742886, 0.41960785)
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="hitBox"]
 
@@ -74,7 +84,8 @@ position = Vector2(0, 33)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
-target_desired_distance = 32.0
+target_desired_distance = 35.0
+avoidance_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.5799999999999996

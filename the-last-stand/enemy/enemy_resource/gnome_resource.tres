@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_djyln")
-hp = 50
+hp = 10
 armor = 1
 dmg = 3
 enemy_tier = 1

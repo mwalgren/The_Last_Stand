@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cstl2ayt7m6j7"]
+[gd_scene load_steps=15 format=3 uid="uid://cstl2ayt7m6j7"]
 
 [ext_resource type="Script" uid="uid://duo21w8s7x3x2" path="res://character/character_base/character.gd" id="1_1l1n4"]
 [ext_resource type="SpriteFrames" uid="uid://dfe0vq20kolhe" path="res://art_assets/character_models/characterAnims/priest/priest_anims.tres" id="2_sm276"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://b7pk8g5mbttrl" path="res://character/character_base/resolve_origin_emitter.gd" id="6_mnoah"]
 [ext_resource type="Script" uid="uid://btxu6yffw71gv" path="res://character/character_base/player_stats_script.gd" id="8_66xrd"]
 [ext_resource type="Script" uid="uid://kbe8qq5ac2me" path="res://character/character_base/mod_bank_script.gd" id="8_sm276"]
+[ext_resource type="Script" uid="uid://bm7jcx4wkxpu0" path="res://character/character_base/hit_miss_resolver_script.gd" id="10_6qj34"]
+[ext_resource type="Script" uid="uid://0cwcq206pgxy" path="res://character/character_base/crit_resolver_script.gd" id="11_nlh6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
 size = Vector2(75, 90)
@@ -78,6 +80,12 @@ script = ExtResource("8_66xrd")
 
 [node name="modBank" type="Node2D" parent="."]
 script = ExtResource("8_sm276")
+
+[node name="hit_miss_Resolver" type="Node2D" parent="."]
+script = ExtResource("10_6qj34")
+
+[node name="critResolver" type="Node2D" parent="."]
+script = ExtResource("11_nlh6y")
 
 [connection signal="area_entered" from="meleeHitBox" to="meleeHitBox" method="_on_area_entered"]
 [connection signal="area_entered" from="enemy_detector" to="enemy_detector" method="_on_area_entered"]
