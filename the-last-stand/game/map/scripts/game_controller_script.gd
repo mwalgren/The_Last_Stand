@@ -21,6 +21,7 @@ enum GAMESTATE {MENU, PREP, COUNTDOWN, SPAWNING, ACTIVE, BOSS, WAVE_CLEARED, REW
 func _ready() -> void:
 	enemy_factory.difficulty = WAVE_COUNT
 
+
 func _set_state(next):
 	_enter_state(next)
 
@@ -76,6 +77,8 @@ func on_enemy_death(xp:int):
 	print("on enemy death triggered")
 	if playerStats:
 		playerStats.gainXP(xp)
+		if playerStats.xp >= playerStats.xpToLevel:
+			on_level_up()
 
 
 
