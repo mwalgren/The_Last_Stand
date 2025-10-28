@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="skillConfig" load_steps=4 format=3 uid="uid://cww5ts0eqdhiu"]
+
+[ext_resource type="PackedScene" uid="uid://cnjs7ntec370s" path="res://character/projectiles/skill_resources/skill_scenes/lightning_strike/lightning_strike_scene.tscn" id="1_nt6dv"]
+[ext_resource type="Script" uid="uid://dce06hr47giqe" path="res://character/projectiles/skill_resources/skillConfig.gd" id="1_rgjqi"]
+[ext_resource type="SpriteFrames" uid="uid://ic4pxyurcv78" path="res://character/projectiles/skill_resources/skill_scenes/lightning_strike/lightning_strike_scene_anims.tres" id="3_5nmp2"]
+
+[resource]
+script = ExtResource("1_rgjqi")
+projectile_scene = ExtResource("1_nt6dv")
+sprite_frames = ExtResource("3_5nmp2")
+id = "lightning_strike"
+damage_type = "lightning"
+target_mode = "at_target"
+cooldown = 3.0
+spawn_mode = "at_target"
+rank = 1
+damage = 5.0
+size = 1.0
+metadata/_custom_type_script = "uid://dce06hr47giqe"

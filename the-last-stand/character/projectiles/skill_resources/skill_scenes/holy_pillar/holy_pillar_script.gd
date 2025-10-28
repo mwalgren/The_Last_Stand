@@ -1,4 +1,5 @@
 extends Node2D
+class_name ground_projectile
 
 
 @export var animSprite:AnimatedSprite2D

@@ -1,8 +1,10 @@
 extends Node2D
 
 @export var upgrade_pool:Array[Resource]
+@export var skill_pool:Array[Resource]
 var taken_ids:Array[Resource]
 var mods_by_id:Dictionary = {}
+
 
 
 func _ready() -> void:
@@ -20,6 +22,18 @@ func pick(n:int):
 	candidates.shuffle()
 	return candidates.slice(0, min(n, candidates.size()))
 
+func pick_skill(n:int):
+	var skill_candidate : Array[Resource] = []
+	for id in skill_pool:
+		if !skill_pool.has(id):
+			skill_candidate.append(id)
+	skill_candidate.shuffle()
+	return skill_candidate.slice(0,min(n,skill_candidate.size()))
+
+
+func mark_taken(res):
+	if res and not taken_ids.has(res):
+		taken_ids.append(res)
 
 
 func get_mod_by_id(_id:String):
