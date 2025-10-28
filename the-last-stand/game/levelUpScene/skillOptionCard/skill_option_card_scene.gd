@@ -11,7 +11,7 @@ var mod_res:Resource
 
 
 signal selected_mod(id)
-
+signal skill_selected(mod_resource)
 
 
 
@@ -58,5 +58,8 @@ func set_card_border(resource):
 
 
 func _on_confirm_pressed() -> void:
-	selected_mod.emit(mod_id)
+	if mod_res and mod_res.has_method("is_skill") and mod_res.is_skill():
+		skill_selected.emit(mod_res)
+	else:
+		selected_mod.emit(mod_id)
 	selectionButton.disabled = true

@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 		set_anim_state(STATE.MOVING)
 
 	if dir.length() < 1.0 or agent.is_navigation_finished():
-		dir = (goal.global_position - global_position)
+		set_anim_state(STATE.ATTACKING)
 
 
 	dir = dir.normalized()
@@ -68,7 +68,6 @@ func set_anim_state(state:STATE):
 		STATE.ATTACKING:
 			current_state = STATE.ATTACKING
 			enemy_sprite.play("attack")
-			print("bingus gaming")
 		STATE.IDLE:
 			current_state = STATE.IDLE
 			enemy_sprite.play("idle")

@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_k6t7p")
-hp = 50
+hp = 15
 armor = 3
 dmg = 5
 enemy_tier = 1
 sprite_frames = ExtResource("2_cufi5")
-baseXP = 5.0
+baseXP = 20.0
 attack_speed = 2.5
 metadata/_custom_type_script = "uid://dv6b4m2dwnanc"

@@ -10,6 +10,7 @@ var attack_ready:bool = false
 var target
 
 @export var attack_timer:Timer
+@export var dmgIntLabel:Label
 
 signal player_in_range
 signal start_attack_anim

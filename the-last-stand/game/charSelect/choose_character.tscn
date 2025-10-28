@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://d1jf3uitffwcj"]
+[gd_scene load_steps=11 format=3 uid="uid://d1jf3uitffwcj"]
 
 [ext_resource type="Texture2D" uid="uid://boj30fxnk7jjj" path="res://art_assets/character_models/Archer/Archer_Idle.png" id="1_ammbq"]
 [ext_resource type="Script" uid="uid://cdetil8odrtlp" path="res://game/charSelect/choose_character_script.gd" id="1_b27f6"]
 [ext_resource type="Texture2D" uid="uid://xhsdmmnps5qg" path="res://art_assets/character_models/Monk/Idle.png" id="2_b27f6"]
 [ext_resource type="Resource" uid="uid://bey0wivfjnodv" path="res://character/character_resources/archer_resource/archer_resource.tres" id="2_cjxk2"]
 [ext_resource type="Resource" uid="uid://ckblwfu8cbd12" path="res://character/character_resources/priest_resource/priest_resource.tres" id="3_ydsan"]
-[ext_resource type="Texture2D" uid="uid://bgb7jn837tl10" path="res://art_assets/character_models/Warrior/Warrior_Idle.png" id="3_yhxof"]
 [ext_resource type="Resource" uid="uid://ckrei67ypt3x6" path="res://character/character_resources/warrior_resource/warrior_resource.tres" id="4_6c7nt"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_oppy6"]
@@ -21,10 +20,6 @@ region = Rect2(450.7901, 63.544296, 64.33948, 71.112045)
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1oym"]
 atlas = SubResource("AtlasTexture_kstgr")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m4rog"]
-atlas = ExtResource("3_yhxof")
-region = Rect2(629.16284, 48.309326, 92.55847, 93.68729)
-
 [node name="ChooseCharacter" type="Control" node_paths=PackedStringArray("archer", "priest", "warrior")]
 layout_mode = 3
 anchors_preset = 15
@@ -35,7 +30,7 @@ grow_vertical = 2
 script = ExtResource("1_b27f6")
 archer = NodePath("CanvasLayer/HBoxContainer/Opt1")
 priest = NodePath("CanvasLayer/HBoxContainer/Opt2")
-warrior = NodePath("CanvasLayer/HBoxContainer/Opt3")
+warrior = NodePath("")
 char_pool = Array[Resource]([ExtResource("2_cjxk2"), ExtResource("3_ydsan"), ExtResource("4_6c7nt")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -108,26 +103,5 @@ grow_vertical = 0
 text = "Priest"
 horizontal_alignment = 1
 
-[node name="Opt3" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_m4rog")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Opt3"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -23.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Warrior"
-horizontal_alignment = 1
-
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Opt1" to="." method="archer_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Opt2" to="." method="priest_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Opt3" to="." method="warrior_pressed"]

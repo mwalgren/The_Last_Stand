@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://ic4pxyurcv78"]
+
+[ext_resource type="Texture2D" uid="uid://dwn160rualohx" path="res://art_assets/spell_sprites/Sprite-sheet.png" id="1_h66j4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcrgc"]
+atlas = ExtResource("1_h66j4")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rjl2"]
+atlas = ExtResource("1_h66j4")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmenu"]
+atlas = ExtResource("1_h66j4")
+region = Rect2(256, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_466kw"]
+atlas = ExtResource("1_h66j4")
+region = Rect2(384, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p17c"]
+atlas = ExtResource("1_h66j4")
+region = Rect2(512, 0, 128, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcrgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rjl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmenu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_466kw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p17c")
+}],
+"loop": true,
+"name": &"activate",
+"speed": 10.0
+}]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=4 uid="uid://b26bhdvb4kd1k"]
+
+[ext_resource type="Texture2D" uid="uid://c7schihijg0cg" path="res://art_assets/tileMaps/Isometric/stone_E.png" id="1_f2h36"]
+[ext_resource type="Texture2D" uid="uid://dfgiee18ejk2c" path="res://art_assets/tileMaps/Isometric/stone_N.png" id="2_u5shu"]
+[ext_resource type="Texture2D" uid="uid://b6w0apb1nnssk" path="res://art_assets/tileMaps/Isometric/stone_S.png" id="3_8nlnn"]
+[ext_resource type="Texture2D" uid="uid://bd3oslg8ac2lp" path="res://art_assets/tileMaps/Isometric/stone_W.png" id="4_g0e6e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f2h36"]
+texture = ExtResource("1_f2h36")
+texture_region_size = Vector2i(256, 128)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5shu"]
+texture = ExtResource("2_u5shu")
+texture_region_size = Vector2i(256, 128)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8nlnn"]
+texture = ExtResource("3_8nlnn")
+texture_region_size = Vector2i(256, 128)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g0e6e"]
+texture = ExtResource("4_g0e6e")
+texture_region_size = Vector2i(256, 128)
+0:2/size_in_atlas = Vector2i(1, 2)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 45)
+0:2/0/terrain_set = 0
+0:2/0/terrain = 1
+0:2/0/terrains_peering_bit/bottom_right_side = 1
+0:2/0/terrains_peering_bit/bottom_left_side = 1
+0:2/0/terrains_peering_bit/top_left_side = 1
+0:2/0/terrains_peering_bit/top_right_side = 1
+
+[sub_resource type="TileSet" id="TileSet_v4jq8"]
+tile_shape = 1
+tile_offset_axis = 1
+tile_size = Vector2i(256, 128)
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_f2h36")
+sources/1 = SubResource("TileSetAtlasSource_u5shu")
+sources/2 = SubResource("TileSetAtlasSource_8nlnn")
+sources/3 = SubResource("TileSetAtlasSource_g0e6e")
+
+[node name="TestScene" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+texture_repeat = 1
+tile_map_data = PackedByteArray("AAABAAMAAwAAAAIAAAACAAQAAwAAAAIAAAADAAMAAwAAAAIAAAACAAMAAwAAAAIAAAABAAIAAwAAAAIAAAAAAAMAAwAAAAIAAAACAAUAAwAAAAIAAAADAAQAAwAAAAIAAAADAAUAAwAAAAIAAAAEAAMAAwAAAAIAAAAEAAQAAwAAAAIAAAAEAAUAAwAAAAIAAAAFAAUAAwAAAAIAAAAGAAUAAwAAAAIAAAAFAAQAAwAAAAIAAAAGAAQAAwAAAAIAAAAFAAMAAwAAAAIAAAADAAIAAwAAAAIAAAACAAIAAwAAAAIAAAABAAQAAwAAAAIAAAAAAAQAAwAAAAIAAAD//wMAAwAAAAIAAAAEAAYAAwAAAAIAAAAHAAQAAwAAAAIAAAAFAAYAAwAAAAIAAAAGAAYAAwAAAAIAAAAHAAUAAwAAAAIAAAAHAAYAAwAAAAIAAAAIAAUAAwAAAAIAAAAIAAYAAwAAAAIAAAAGAAcAAwAAAAIAAAAJAAUAAwAAAAIAAAA=")
+tile_set = SubResource("TileSet_v4jq8")

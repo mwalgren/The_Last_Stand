@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnjs7ntec370s"]
+
+[ext_resource type="Script" uid="uid://14qp64ajh647" path="res://character/projectiles/skill_resources/skill_scenes/lightning_strike/lightning_strike_scene.gd" id="1_du8ro"]
+[ext_resource type="SpriteFrames" uid="uid://ic4pxyurcv78" path="res://character/projectiles/skill_resources/skill_scenes/lightning_strike/lightning_strike_scene_anims.tres" id="2_du8ro"]
+
+[node name="LightningStrikeScene" type="Node2D" node_paths=PackedStringArray("animSprite")]
+script = ExtResource("1_du8ro")
+animSprite = NodePath("AnimatedSprite2D")
+metadata/_custom_type_script = "uid://cxotqcvowvto5"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_du8ro")
+animation = &"activate"
+frame = 2
+frame_progress = 0.42849836

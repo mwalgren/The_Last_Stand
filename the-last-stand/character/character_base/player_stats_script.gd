@@ -18,6 +18,7 @@ func gainXP(xpToGain):
 
 
 func levelUp():
+	print("you are now level " , level)
 	leveledUp.emit(level)
 	level += 1 
 	xp = 0

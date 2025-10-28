@@ -53,3 +53,7 @@ func set_character_data(charData:Resource):
 
 func apply_mod(mod:Resource):
 	modBank.add_mod(mod)
+
+
+func get_level():
+	return playerStats.level
